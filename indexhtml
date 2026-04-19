@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق تسعيرة - Tas3era App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #e8f4fd;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --white: #ffffff;
+        }
+
+        body { 
+            font-family: 'Tajawal', sans-serif; 
+            line-height: 1.6; 
+            color: #333; 
+            margin: 0; 
+            padding: 0; 
+            background-color: #f4f7f6; 
+        }
+
+        /* Language Toggle Buttons */
+        .lang-switch-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            background: rgba(244, 247, 246, 0.95);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-btn {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 8px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: 0.3s;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .lang-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .container { 
+            max-width: 900px; 
+            margin: 20px auto 50px auto; 
+            background: #fff; 
+            padding: 40px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+        }
+        
+        .app-header { text-align: center; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 2px solid #eee; }
+        .logo-container { display: flex; justify-content: center; margin-bottom: 20px; }
+        .app-logo { width: 110px; height: 110px; border-radius: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); object-fit: cover; }
+        .app-summary { font-size: 1.15em; color: #444; margin-bottom: 25px; }
+        
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin: 25px 0; }
+        .feature-item { background: #fdfdfd; padding: 15px; border-radius: 12px; text-align: center; border: 1px solid #eee; transition: 0.3s; border-top: 4px solid var(--primary-color); }
+        .feature-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        
+        h1 { color: var(--text-dark); text-align: center; font-size: 2rem; margin-bottom: 15px; }
+        h2 { color: var(--primary-color); margin-top: 35px; border-right: 5px solid var(--primary-color); padding-right: 15px; font-size: 1.4rem; }
+        
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+
+        .contact-box { background: var(--secondary-color); padding: 25px; border-radius: 15px; text-align: center; margin-top: 30px; }
+        .email-link { color: var(--primary-color); font-weight: bold; text-decoration: none; }
+        
+        /* English Adjustments */
+        .en-mode { direction: ltr; text-align: left; }
+        .en-mode h2 { border-right: none; border-left: 5px solid var(--primary-color); padding-right: 0; padding-left: 15px; }
+
+        .footer { text-align: center; font-size: 0.9em; color: #7f8c8d; margin-top: 40px; padding: 20px; }
+
+        @media (max-width: 600px) {
+            .container { margin: 10px; padding: 20px; }
+            h1 { font-size: 1.6rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="lang-switch-container">
+        <button class="lang-btn active" onclick="switchLang('ar')">النسخة العربية</button>
+        <button class="lang-btn" onclick="switchLang('en')">English Version</button>
+    </div>
+
+    <div class="container">
+        
+        <div id="ar-content" class="content-section active">
+            <header class="app-header">
+                <div class="logo-container">
+                    <img src="tas3era_logo.png" alt="لوجو تسعيرة" class="app-logo">
+                </div>
+                <h1>عن تطبيق تسعيرة</h1>
+                <p class="app-summary">
+                    تطبيق <strong>تسعيرة</strong> هو رفيقك الذكي لمتابعة تقلبات الأسعار وإدارة منتجاتك بكل سهولة. تم تصميم التطبيق ليوفر للمستخدمين والمتاجر أداة قوية لتحليل السوق.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-item">📊 يعمل بالكامل بدون إنترنت.</div>
+                    <div class="feature-item">🌍 يدعم العربية والإنجليزية.</div>
+                    <div class="feature-item">📈 جرافات بيانية لمتابعة التغيرات.</div>
+                    <div class="feature-item">🔐 حماية وتشفير محلي متطور.</div>
+                </div>
+            </header>
+
+            <h2>سياسة الخصوصية</h2>
+            <p><strong>آخر تحديث:</strong> 11 أبريل 2026</p>
+
+            <h2>1. المعلومات التي نجمعها</h2>
+            <ul>
+                <li><strong>المعلومات الشخصية:</strong> الاسم والبريد عند تسجيل الدخول بجوجل.</li>
+                <li><strong>معلومات الجهاز:</strong> معرف الجهاز (ID) لمنع الاحتيال.</li>
+                <li><strong>بيانات العمليات:</strong> رصيد المفاتيح (Keys) بشكل آمن.</li>
+            </ul>
+
+            <h2>2. كيفية استخدام بياناتك</h2>
+            <p>نستخدمها لتحسين وظائف التطبيق، إدارة المشتريات عبر Google Play، ومزامنة البيانات عبر Firebase.</p>
+
+            <h2>3. أمن البيانات (التشفير)</h2>
+            <p>نستخدم تقنيات <strong>EncryptedSharedPreferences</strong> ونظام <strong>Android Keystore</strong> لتشفير بياناتك المحلية الحساسة.</p>
+
+            <div class="contact-box">
+                <strong>للتواصل والدعم:</strong><br>
+                البريد الإلكتروني: <a href="mailto:4czall@gmail.com" class="email-link">4czall@gmail.com</a><br>
+                تيليجرام: <a href="https://t.me/Tas3eraFamilyBot" target="_blank" class="email-link">بوت الدعم الفني</a>
+            </div>
+        </div>
+
+        <div id="en-content" class="content-section en-mode">
+            <header class="app-header">
+                <div class="logo-container">
+                    <img src="tas3era_logo.png" alt="Tas3era Logo" class="app-logo">
+                </div>
+                <h1>About Tas3era App</h1>
+                <p class="app-summary">
+                    <strong>Tas3era</strong> is your smart companion for tracking price fluctuations and managing products seamlessly, providing powerful market analysis tools.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-item">📊 Works completely offline.</div>
+                    <div class="feature-item">🌍 Arabic & English support.</div>
+                    <div class="feature-item">📈 Visual price change charts.</div>
+                    <div class="feature-item">🔐 Advanced local encryption.</div>
+                </div>
+            </header>
+
+            <h2>Privacy Policy</h2>
+            <p><strong>Last Updated:</strong> April 11, 2026</p>
+
+            <h2>1. Information We Collect</h2>
+            <ul>
+                <li><strong>Personal Data:</strong> Name and email via Google Sign-In.</li>
+                <li><strong>Device ID:</strong> Collected for fraud prevention.</li>
+                <li><strong>Transactions:</strong> Secure storage of your Keys Balance.</li>
+            </ul>
+
+            <h2>2. Data Usage</h2>
+            <p>Data is used for app functionality, Google Play Billing processing, and cross-device sync via Firebase.</p>
+
+            <h2>3. Data Security (Encryption)</h2>
+            <p>We use <strong>EncryptedSharedPreferences</strong> and <strong>Android Keystore</strong> to safeguard your sensitive local information.</p>
+
+            <div class="contact-box">
+                <strong>Contact & Support:</strong><br>
+                Email: <a href="mailto:4czall@gmail.com" class="email-link">4czall@gmail.com</a><br>
+                Telegram: <a href="https://t.me/Tas3eraFamilyBot" target="_blank" class="email-link">Support Bot</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 Tas3era App - All Rights Reserved.
+        </div>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+
+            if (lang === 'ar') {
+                document.getElementById('ar-content').classList.add('active');
+                document.querySelectorAll('.lang-btn')[0].classList.add('active');
+                document.body.dir = "rtl";
+            } else {
+                document.getElementById('en-content').classList.add('active');
+                document.querySelectorAll('.lang-btn')[1].classList.add('active');
+                document.body.dir = "ltr";
+            }
+        }
+    </script>
+</body>
+</html>
